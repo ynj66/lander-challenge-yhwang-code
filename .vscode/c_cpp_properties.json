@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${vcpkgRoot}/x64-windows/include",
-                "C:/libs/eigen-3.4.0"
+                "C:/libs/eigen-3.4.0/"
             ],
             "defines": [
                 "_DEBUG",

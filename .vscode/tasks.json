@@ -10,7 +10,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-I C:/libs/eigen-3.4.0"
+                "-IC:/libs/eigen-3.4.0/"
             ],
             "options": {
                 "cwd": "${fileDirname}"
