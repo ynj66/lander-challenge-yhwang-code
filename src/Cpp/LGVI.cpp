@@ -8,3 +8,12 @@ Eigen::Matrix3d S(const Eigen::Vector3d& x) {
         -x(1), x(0), 0;
     return S;
 }
+
+int main() {
+    Eigen::VectorXd v(3); // Declare a 3-element column vector of doubles
+    v(0) = 1.0;
+    v(1) = 2.5;
+    v(2) = 3.0;
+    std::cout << "Vector v:\n" << v << std::endl;
+    return 0;
+}
