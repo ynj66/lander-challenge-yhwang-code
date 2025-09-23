@@ -18,10 +18,10 @@ struct C1C2Derivs{
     double c2;
     double dc1;
     double dc2;
-}
+};
 
 C1C2Derivs c1c2derivs(double a) {
-    constexpr double eps = 1e-8
+    constexpr double eps = 1e-8;
     double c1, c2, dc1, dc2;
 
     if (std::abs(a) < eps){
