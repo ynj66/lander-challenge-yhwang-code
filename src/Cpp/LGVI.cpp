@@ -4,13 +4,10 @@
 using namespace std;
 using namespace Eigen;
 
-
-int main(){
-
-    Matrix <float, 2,2> A;
-    A << 1,2,
-         3,4;
-    cout << A << endl;
-    cout << "Hello WOrld!" << endl;
-    return 0;
+Eigen::Matrix3d S(Eigen::Vector3d x){
+    Matrix3d S;
+    S<< 0, -x(2), x(1),
+        x(2), 0, -x(0),
+        -x(1), x(0), 0;
+    return S;
 }
