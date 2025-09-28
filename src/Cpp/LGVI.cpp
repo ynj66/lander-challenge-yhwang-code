@@ -1,6 +1,7 @@
 #include <iostream>
 #include<Eigen/Dense>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 using namespace Eigen;
@@ -108,4 +109,82 @@ Eigen::Matrix3d F_from_f(Eigen::Vector3d f){
     Eigen::Matrix3d I3 = Eigen::Matrix3d::Identity();
     Eigen::Matrix3d F = I3 + c1 * Sf + c2 * (Sf * Sf);
     return F;
+}
+
+Eigen::Vector3d M(const double m, const double g, const Eigen::Vector3d rho, const Eigen::Vector3d e3, Eigen::Matrix3d R){
+    Eigen::Matrix3d R_transpose = R.transpose();
+    Eigen::Vector3d RTe3 = R_transpose * e3;
+    Eigen::Vector3d torque = m * g * rho.cross(RTe3);
+    return torque; 
+}
+
+
+
+// Implementing Iteration Scheme
+int main(){
+    // Time span:
+
+    // Interval
+    double h = 0.001;
+
+    // Number of steps;
+    int k_max = 30000;
+
+    // Initialising lists
+    std::vector<Eigen::Vector3d> Pi_list(k_max, Eigen::Vector3d::Zero()); // angular momentum lists
+    std::vector<Eigen::Matrix3d> R_list(k_max, Eigen::Matrix3d::Zero()); //rotation matrices
+
+    // constants
+    double m, g;
+    m = 1.0;
+    g = 10.0;
+
+    Eigen::Vector3d rho;
+    rho << 0.0, 0.0, 1.0;
+
+    Eigen::Vector3d e3;
+    e3 << 0.0, 0.0, 1.0;
+
+    Eigen::Vector3d J_diag;
+    J_diag << 1.0, 2.8, 2;
+
+    Eigen::Matrix3d J = J_diag.asDiagonal();
+
+    // Initial conditions
+    Eigen::Vector3d omega0;
+    omega0 << 0.5, -0.5, 0.4;
+
+    Eigen::Matrix3d R0;
+    R0.setIdentity();
+
+    // Setting initial values
+    Pi_list[0] = J * omega0;
+    R_list[0] = R0;
+
+    // tolerance and maxit
+    double tol = 1e-10;
+    int maxit = 50;
+
+    for (int i=0; i < (k_max-1); i++){
+        //Solving for f
+        Eigen::Vector3d M_i = M(m, g, rho, e3, R_list[i]);
+        
+        Eigen::Vector3d f;
+        f = f_newton(J_diag, Pi_list[i], M_i, h, tol, maxit);
+
+        Eigen::Matrix3d F = F_from_f(f);
+        Eigen::Matrix3d F_transpose = F.transpose();
+
+        // New rotation matrix R
+        R_list[i+1] = R_list[i] * F;
+
+        // New torque
+        Eigen::Vector3d M_next  = M(m, g, rho, e3, R_list[i+1]);
+
+        // New angular momentum
+        Pi_list[i+1] = F_transpose * Pi_list[i] + (h/2) * F_transpose * M_i + (h/2) * M_next;
+    }
+
+    Eigen::Matrix3d J_inv = J.inverse();
+    return 0;
 }
