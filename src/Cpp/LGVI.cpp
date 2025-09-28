@@ -95,3 +95,17 @@ Eigen::Vector3d f_newton(Eigen::Vector3d J_diag, Eigen::Vector3d Pi_k, Eigen::Ve
     }
     return f;
 }
+
+Eigen::Matrix3d F_from_f(Eigen::Vector3d f){
+    double a = f.norm();
+    auto res = c1c2derivs(a);
+    double c1 = res.c1;
+    double c2 = res.c2;
+    double dc1 = res.dc1;
+    double dc2 = res.dc2;
+
+    Eigen::Matrix3d Sf = S(f);
+    Eigen::Matrix3d I3 = Eigen::Matrix3d::Identity();
+    Eigen::Matrix3d F = I3 + c1 * Sf + c2 * (Sf * Sf);
+    return F;
+}
