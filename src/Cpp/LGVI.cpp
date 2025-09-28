@@ -2,6 +2,7 @@
 #include<Eigen/Dense>
 #include <cmath>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 using namespace Eigen;
@@ -29,7 +30,7 @@ C1C2Derivs c1c2derivs(double a) {
         c1 = 1.0 - a*a/6.0 + std::pow(a,4)/120.0;
         c2 = 0.5 - a*a/24.0 + std::pow(a,4)/720.0;
         dc1 = -a/3.0 + std::pow(a,3)/30.0;
-        dc2 = -1.0/12.0 + a/120.0;
+        dc2 = -a/12.0 + std::pow(a,3)/120.0;
     }
     else{
         c1 = std::sin(a) / a;
