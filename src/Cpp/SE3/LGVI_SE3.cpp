@@ -130,7 +130,28 @@ Eigen::Vector3d Uprime(const double mu, Eigen::Vector3d x){
     return g_accel;
 }
 
+// matrix utilities
 
+
+// --- Implementing necessary functions from T. Lee UAV tracking paper
+// vee map
+Eigen::Vector3d vee(const Eigen::Matrix3d V){
+    Eigen::Vector3d v;
+    Eigen::Matrix3d E;
+
+    v.setZero();
+    E = V + V.transpose();
+
+    if (E.norm() > 1e-6){
+        std::cout << "VEE: E.norm() = " << E.norm() <<std::endl;
+    }
+
+    v(0) = v(2,1);
+    v(1) = V(0,2);
+    v(2) = V(1,0);
+
+    return v;
+}
 
 // Implementing Iteration Scheme
 int main(){
