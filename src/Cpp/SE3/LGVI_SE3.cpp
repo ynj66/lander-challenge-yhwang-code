@@ -215,7 +215,7 @@ int main(){
     // "e3_R_Pi" is the projection of Pi onto the rotated e3 axis; 
     // "SO3_err" is the deviation from a valid rotation matrix (SO(3) error).
     std::ofstream fout("lgvi_se3_out.csv");
-    fout << "t,Pi_x,Pi_y,Pi_z,omega_x,omega_y,omega_z, x, y, z, P_x, P_y, P_z, v_x, v_y, v_z, SO3_err\n";
+    fout << "t,Pi_x,Pi_y,Pi_z,omega_x,omega_y,omega_z,x,y,z,P_x,P_y,P_z,v_x,v_y,v_z,SO3_err\n";
     for (int i=0; i<k_max; ++i){
         double t = i * h;
         Eigen::Vector3d Pi = Pi_list[i];
