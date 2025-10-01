@@ -1,0 +1,316 @@
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  
+
+\IEEEoverridecommandlockouts                              
+\overrideIEEEmargins
+
+
+\title{\LARGE \bf
+A Latex Tutorial
+}
+
+
+\author{By Daniel Ruatta}
+
+
+\begin{document}
+
+
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%% ABSTRACT - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+This LaTeX tutorial will introduce LaTeX, creating a .tex file, sections,
+body text, tables, figures, mathematical formulas, acknowledgements, 
+and references. 
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+
+This tutorial is designed to teach a novice engineering student how to create a document in LaTeX, and has been created in LaTeX. It uses an IEEE formatting
+template from Overleaf.com. 
+
+This tutorial will be helpful because it will give students a powerful tool to create streamlined lab reports for their future labs. Engineering classes generally have 4-8 labs, each requiring a 20+ page lab report. LaTeX allows engineering students to create these lab reports as quickly as possible, and has the potential to create reports that are much neater and well-formatted than Google Docs or Microsoft Word. 
+
+All engineering students should learn LaTeX because other word processors have many tools that are not easily accessible due to most users not needing them. As lab reports can be lengthy, complex, and full of diagrams, graphs, and photos, students will need a tool that can easily handle all of the above problems.
+
+%%%%%%%%%%%%%%%%% .CREATING A .TEX FILE - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Creating a .tex file}
+
+To create a .tex file, you will need to go to Overleaf.com and click the "Create a New Paper" button. This will allow you to create a new paper using the sample template on Overleaf. Once you have done this, click the Menu icon at the top of the page, and select Project. This will bring up the option to download your project as a .zip file. Click "Download as ZIP" so that your paper is zipped to your Downloads folder along with any project configuration (.cls) files. The .tex file will be the file you edit.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Environments}
+
+- The \verb|\begin{}| command signifies the beginning of your text, and will contain the majority of your verbiage until the \verb|\end| command closes your document.
+
+- The \verb|\begin{}| command also signifies the end of the preamble, a space for formatting your paper.
+
+The \verb|\end{}| command is used because LaTeX offers the writer the ability to use commands after his or her paper is complete, such as create an index. It also gives the writer a place to insert important comments for future editors, particularly because after the \verb|\end{document}| command, LaTeX will not typeset comments.
+
+%- Source: https://en.wikibooks.org/wiki/LaTeX/Document_Structure
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Reserved Characters}
+
+There are several special characters that, if directly put into the LaTeX text editor, do not get printed. The reason for this is that LaTeX needs certain characters to relay formatting changes. The reserved characters that we will be discussing are the Backslash (\textbackslash), the Tidle (\~{}), the Double Backslash (\textbackslash \textbackslash), and the Percent Symbol (\%).\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Backslash}
+
+\verb|\|
+
+The backslash is used to enter special characters in your LaTeX file. Because of this, it cannot be used directly the same way a consonant or vowel can be used. Instead, the text \verb|\textbackslash| must be used in order to enter a backslash your text file. If you simply wish to use the backslash as part of a special formatting character, enter it before your command (ex: \verb|\~{}| is used to create a Tilde).\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Tilde}
+
+\verb|~|
+
+The Tilde is another special character that cannot be used by simply typing \verb|"~"|. The reason for this is the \verb|\~| command is used to add a Tilde onto a character (ex: \~x). \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Double Backslash}
+
+\verb|\\|
+
+The double backslash is used for line breaking. One misconception that a new user might have is that if a single backslash is used for entering commands, then a backslash followed by another backslash would create the following: \textbackslash. This is incorrect; However, the simplicity of using the double backslash to create a line break is very convenient, and should be used at the end of most large chunks of text in order to create separation and neatness within a LaTeX file. One incorrect usage of the double backslash is right before another command that uses a backslash. Even if there is white space and/or comments in between the double backslash and the command, the compiler will throw an error. The workaround for this is to put the double backslash at the end of the paragraph you type, right after the final period. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Percent Symbol}
+
+\verb|%|  
+|
+
+The percent symbol is used for adding comments to your LaTeX file that can only be seen during the editing process. Comments are very helpful for several reasons: They are a different color than most text (blue), which means they can add the amount of spacing necessary for an editor to understand where one paragraph ends and another begins. They are also important when a document becomes too complex for an editor to understand at a glance. By adding comments, editors can explain how one section ties into another, and prevent future edits from overriding important information.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Displaying the above characters}
+
+%\verb|Using the \verb command|
+
+We have several options for displaying the above characters. One option is to the use the \verb|\verb| command, which allows the writer to display any text inside the box (||) following the \verb|\verb| command. 
+
+We can also use the \verb|\text| command, which allows us to display several of the above characters. \verb|\textbackslash| allows us to display the backslash, for example.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Preamble}
+
+- We specified a \verb|\documentclass[letterpaper, 10 pt, conference]{ieeeconf}| earlier. When we specified that document class, we began the \textit{preamble}. 	%- Italicize: https://www.sharelatex.com/learn/Bold,_italics_and_underlining\ %
+The preamble can contain many different \verb|\|commands that can change the structure and formatting of the remainder of the document. The end of the preamble is signified by the \verb|\begin{document}| command. Between this command and the \verb|\end{document}| command will be the text and commands that make up the majority of your document. 
+
+ %   - Source: https://en.wikibooks.org/wiki/LaTeX/Document_Structure
+
+
+% \documentclass[] and class files
+% Packages
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sections}
+
+\verb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Subsections}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Body Text}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Paragraphs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Content}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Tables}
+
+% Explain the difference between
+% 		\begin{table} and  \begin{tabular}
+
+% Explain the following characters/symbols:
+% l, c, r, | (vertical bar), \hline, \\
+
+% Explain how to enter content.
+
+% Use an example table showing how to create a table at least 2 columns wide and 3 rows long.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Figures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mathematical Formulas}
+
+% Demonstrate how to create formulas, using examples such as these:
+
+% Demonstrate:
+% Equation environments (in-line vs. display)
+% Symbols (example:  “\delta” ∆ )
+% Fractions
+% Superscript and Subscript
+
+
+
+
+% LaTeX code for the most common formulas:
+% http://en.wikibooks.org/wiki/LaTeX/Mathematics
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{How to: Acknowledgements}
+
+% Demonstrate how to include this section.
+% Note: this is different from including your own Acknowledgements section
+% What is this section for?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{How to: References}
+
+% Demonstrate how to set up the 	thebibliography environment
+%  Explain how to include each bibitem
+
+% Explain the following commands:
+% \label
+% \ref
+% \cite
+% Note: It will be helpful to use a previous figure as an example for \label and \ref
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{CONCLUSIONS}
+
+
+\addtolength{\textheight}{-12cm}   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{ACKNOWLEDGMENT}
+
+- Overleaf.com, for the template
+
+
+
+% For acknowledgements, thank anyone who personally helped you with this assignment.
+% If you read a general tutorial or watched an instructional YouTube video on LaTeX, but didn’t specifically reference it, thank the creators.
+% If you received help from a current CMPE 185 student, let us know.  
+
+% Anything you do specifically reference should, of course, be cited and included in the References section.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{APPENDIX}
+
+Appendixes should appear before the acknowledgment. 
+\newline
+\newline
+- Any sources?
+
+Overleaf.com
+
+References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+
+
+
+
+
+
+\end{document}
+
+% \begin{itemize}
+
+% \item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as Ò3.5-inch disk driveÓ.
+% \item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
+% \item Do not mix complete spellings and abbreviations of units: ÒWb/m2Ó or Òwebers per square meterÓ, not Òwebers/m2Ó.  Spell out units when they appear in text: Ò. . . a few henriesÓ, not Ò. . . a few HÓ.
+% \item Use a zero before decimal points: Ò0.25Ó, not Ò.25Ó. Use Òcm3Ó, not ÒccÓ. (bullet list)
+
+% \end{itemize}
+
+
+
+
+% \subsection{Equations}
+
+% The equations are an exception to the prescribed specifications of this template. You will need to determine whether or not your equation should be typed using either the Times New Roman or the Symbol font (please no other font). To create multileveled equations, it may be necessary to treat the equation as a graphic and insert it into the text after your paper is styled. Number equations consecutively. Equation numbers, within parentheses, are to position flush right, as in (1), using a right tab stop. To make your equations more compact, you may use the solidus ( / ), the exp function, or appropriate exponents. Italicize Roman symbols for quantities and variables, but not Greek symbols. Use a long dash rather than a hyphen for a minus sign. Punctuate equations with commas or periods when they are part of a sentence, as in
+
+% $$
+% \alpha + \beta = \chi \eqno{(1)}
+% $$
+
+% Note that the equation is centered using a center tab stop. Be sure that the symbols in your equation have been defined before or immediately following the equation. Use Ò(1)Ó, not ÒEq. (1)Ó or Òequation (1)Ó, except at the beginning of a sentence: ÒEquation (1) is . . .
+
+
+
+
+
+\section{USING THE TEMPLATE}
+
+Use this sample document as your LaTeX source file to create your document. Save this file as {\bf root.tex}. You have to make sure to use the cls file that came with this distribution. If you use a different style file, you cannot expect to get required margins. Note also that when you are creating your out PDF file, the source file is only part of the equation. {\it Your \TeX\ $\rightarrow$ PDF filter determines the output file size. Even if you make all the specifications to output a letter file in the source - if you filter is set to produce A4, you will only get A4 output. }
+
+It is impossible to account for all possible situation, one would encounter using \TeX. If you are using multiple \TeX\ files you must make sure that the ``MAIN`` source file is called root.tex - this is particularly important if your conference is using PaperPlaza's built in \TeX\ to PDF conversion tool.
+
+\subsection{Headings, etc}
+
+Text heads organize the topics on a relational, hierarchical basis. For example, the paper title is the primary text head because all subsequent material relates and elaborates on this one topic. If there are two or more sub-topics, the next level head (uppercase Roman numerals) should be used and, conversely, if there are not at least two sub-topics, then no subheads should be introduced. Styles named ÒHeading 1Ó, ÒHeading 2Ó, ÒHeading 3Ó, and ÒHeading 4Ó are prescribed.
+
+\subsection{Figures and Tables}
+
+Positioning Figures and Tables: Place figures and tables at the top and bottom of columns. Avoid placing them in the middle of columns. Large figures and tables may span across both columns. Figure captions should be below the figures; table heads should appear above the tables. Insert figures and tables after they are cited in the text. Use the abbreviation ÒFig. 1Ó, even at the beginning of a sentence.
+
+\begin{table}[h]
+\caption{An Example of a Table}
+\label{table_example}
+\begin{center}
+\begin{tabular}{|c||c|}
+\hline
+One & Two\\
+\hline
+Three & Four\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+   \begin{figure}[thpb]
+      \centering
+      \framebox{\parbox{3in}{We suggest that you use a text box to insert a graphic (which is ideally a 300 dpi TIFF or EPS file, with all fonts embedded) because, in an document, this method is somewhat more stable than directly inserting a picture.
+}}
+      %\includegraphics[scale=1.0]{figurefile}
+      \caption{Inductance of oscillation winding on amorphous
+       magnetic core versus DC bias magnetic field}
+      \label{figurelabel}
+   \end{figure}
+   
+
+Figure Labels: Use 8 point Times New Roman for Figure labels. Use words rather than symbols or abbreviations when writing Figure axis labels to avoid confusing the reader. As an example, write the quantity ÒMagnetizationÓ, or ÒMagnetization, MÓ, not just ÒMÓ. If including units in the label, present them within parentheses. Do not label axes only with units. In the example, write ÒMagnetization (A/m)Ó or ÒMagnetization {A[m(1)]}Ó, not just ÒA/mÓ. Do not label axes with a ratio of quantities and units. For example, write ÒTemperature (K)Ó, not ÒTemperature/K.Ó
+

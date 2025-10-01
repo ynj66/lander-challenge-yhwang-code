@@ -15,5 +15,21 @@
 \section{Introduction}
 In this project I explored geometric structure preserving numerical integration methods, 
 and geometric control systems. 
+Lie Group Variational Integrators finds discrete equations of motion
+by discretising the Lagrangian of the system, and applys the discrete case for the variation
+of the system needing to be 0. 
+The spacecraft position and its attitude is represented by the configuration manifold given by 
+$\mathbf{SE}(3)$.
+\subsection{Motivation}
+\begin{itemize}
+    \item $SE(3)$ and $SO(3)$ are Lie Groups. 
+    \item Certain quantities are conserved
+    \item Runge Kutta Schemes do not exhibit these quantities preserving, thus resulting in poor long time accuracy in qualitattive behaviour
+    \item By finding discrete equations of motion that is computed directly on the Lie Groups, these quantities can be conserved.
+\end{itemize}
+These are Lie Groups.
+
+\section{Equations of Motion}
+For continuous
 
 \end{document}

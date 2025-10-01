@@ -146,7 +146,7 @@ Eigen::Vector3d vee(const Eigen::Matrix3d V){
         std::cout << "VEE: E.norm() = " << E.norm() <<std::endl;
     }
 
-    v(0) = v(2,1);
+    v(0) = V(2,1);
     v(1) = V(0,2);
     v(2) = V(1,0);
 
