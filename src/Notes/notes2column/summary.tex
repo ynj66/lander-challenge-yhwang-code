@@ -1,15 +1,20 @@
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  
+\documentclass[letterpaper, 9 pt, conference]{ieeeconf}  
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
 
 \IEEEoverridecommandlockouts                              
 \overrideIEEEmargins
 
 
 \title{\LARGE \bf
-A Latex Tutorial
+C++ Implementations of Lie Group Variational Integrators and Nonlinear Geometric PD Control of a Spacecraft
 }
 
 
-\author{By Daniel Ruatta}
+\author{Yoonjae Hwang}
 
 
 \begin{document}
@@ -24,220 +29,106 @@ A Latex Tutorial
 %%%%%%%%%%%%%%%%%%%%%% ABSTRACT - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-This LaTeX tutorial will introduce LaTeX, creating a .tex file, sections,
-body text, tables, figures, mathematical formulas, acknowledgements, 
-and references. 
+For this project, I studied geometric structure-preserving numerical methods for ODEs, 
+and geometric control. I started from the source code provided from the 3F2 extension pack. 
+The Eigen library was used to construct non-trivial matrix operations. The main papers that I used to study this were Leok et al's work in geometric integration, 
+and T.Lee's work in geometric control of UAVs.
 
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{INTRODUCTION}
-
-This tutorial is designed to teach a novice engineering student how to create a document in LaTeX, and has been created in LaTeX. It uses an IEEE formatting
-template from Overleaf.com. 
-
-This tutorial will be helpful because it will give students a powerful tool to create streamlined lab reports for their future labs. Engineering classes generally have 4-8 labs, each requiring a 20+ page lab report. LaTeX allows engineering students to create these lab reports as quickly as possible, and has the potential to create reports that are much neater and well-formatted than Google Docs or Microsoft Word. 
-
-All engineering students should learn LaTeX because other word processors have many tools that are not easily accessible due to most users not needing them. As lab reports can be lengthy, complex, and full of diagrams, graphs, and photos, students will need a tool that can easily handle all of the above problems.
-
-%%%%%%%%%%%%%%%%% .CREATING A .TEX FILE - DONE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Creating a .tex file}
-
-To create a .tex file, you will need to go to Overleaf.com and click the "Create a New Paper" button. This will allow you to create a new paper using the sample template on Overleaf. Once you have done this, click the Menu icon at the top of the page, and select Project. This will bring up the option to download your project as a .zip file. Click "Download as ZIP" so that your paper is zipped to your Downloads folder along with any project configuration (.cls) files. The .tex file will be the file you edit.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Environments}
-
-- The \verb|\begin{}| command signifies the beginning of your text, and will contain the majority of your verbiage until the \verb|\end| command closes your document.
-
-- The \verb|\begin{}| command also signifies the end of the preamble, a space for formatting your paper.
-
-The \verb|\end{}| command is used because LaTeX offers the writer the ability to use commands after his or her paper is complete, such as create an index. It also gives the writer a place to insert important comments for future editors, particularly because after the \verb|\end{document}| command, LaTeX will not typeset comments.
-
-%- Source: https://en.wikibooks.org/wiki/LaTeX/Document_Structure
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Reserved Characters}
-
-There are several special characters that, if directly put into the LaTeX text editor, do not get printed. The reason for this is that LaTeX needs certain characters to relay formatting changes. The reserved characters that we will be discussing are the Backslash (\textbackslash), the Tidle (\~{}), the Double Backslash (\textbackslash \textbackslash), and the Percent Symbol (\%).\\
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The Backslash}
-
-\verb|\|
-
-The backslash is used to enter special characters in your LaTeX file. Because of this, it cannot be used directly the same way a consonant or vowel can be used. Instead, the text \verb|\textbackslash| must be used in order to enter a backslash your text file. If you simply wish to use the backslash as part of a special formatting character, enter it before your command (ex: \verb|\~{}| is used to create a Tilde).\\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The Tilde}
-
-\verb|~|
-
-The Tilde is another special character that cannot be used by simply typing \verb|"~"|. The reason for this is the \verb|\~| command is used to add a Tilde onto a character (ex: \~x). \\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The Double Backslash}
-
-\verb|\\|
-
-The double backslash is used for line breaking. One misconception that a new user might have is that if a single backslash is used for entering commands, then a backslash followed by another backslash would create the following: \textbackslash. This is incorrect; However, the simplicity of using the double backslash to create a line break is very convenient, and should be used at the end of most large chunks of text in order to create separation and neatness within a LaTeX file. One incorrect usage of the double backslash is right before another command that uses a backslash. Even if there is white space and/or comments in between the double backslash and the command, the compiler will throw an error. The workaround for this is to put the double backslash at the end of the paragraph you type, right after the final period. \\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{The Percent Symbol}
-
-\verb|%|  
-|
-
-The percent symbol is used for adding comments to your LaTeX file that can only be seen during the editing process. Comments are very helpful for several reasons: They are a different color than most text (blue), which means they can add the amount of spacing necessary for an editor to understand where one paragraph ends and another begins. They are also important when a document becomes too complex for an editor to understand at a glance. By adding comments, editors can explain how one section ties into another, and prevent future edits from overriding important information.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Displaying the above characters}
-
-%\verb|Using the \verb command|
-
-We have several options for displaying the above characters. One option is to the use the \verb|\verb| command, which allows the writer to display any text inside the box (||) following the \verb|\verb| command. 
-
-We can also use the \verb|\text| command, which allows us to display several of the above characters. \verb|\textbackslash| allows us to display the backslash, for example.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Preamble}
-
-- We specified a \verb|\documentclass[letterpaper, 10 pt, conference]{ieeeconf}| earlier. When we specified that document class, we began the \textit{preamble}. 	%- Italicize: https://www.sharelatex.com/learn/Bold,_italics_and_underlining\ %
-The preamble can contain many different \verb|\|commands that can change the structure and formatting of the remainder of the document. The end of the preamble is signified by the \verb|\begin{document}| command. Between this command and the \verb|\end{document}| command will be the text and commands that make up the majority of your document. 
-
- %   - Source: https://en.wikibooks.org/wiki/LaTeX/Document_Structure
-
-
-% \documentclass[] and class files
-% Packages
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Sections}
-
-\verb
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Subsections}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Body Text}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Paragraphs}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Content}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Tables}
-
-% Explain the difference between
-% 		\begin{table} and  \begin{tabular}
-
-% Explain the following characters/symbols:
-% l, c, r, | (vertical bar), \hline, \\
-
-% Explain how to enter content.
-
-% Use an example table showing how to create a table at least 2 columns wide and 3 rows long.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Figures}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Mathematical Formulas}
-
-% Demonstrate how to create formulas, using examples such as these:
-
-% Demonstrate:
-% Equation environments (in-line vs. display)
-% Symbols (example:  “\delta” ∆ )
-% Fractions
-% Superscript and Subscript
-
-
-
-
-% LaTeX code for the most common formulas:
-% http://en.wikibooks.org/wiki/LaTeX/Mathematics
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{How to: Acknowledgements}
-
-% Demonstrate how to include this section.
-% Note: this is different from including your own Acknowledgements section
-% What is this section for?
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{How to: References}
-
-% Demonstrate how to set up the 	thebibliography environment
-%  Explain how to include each bibitem
-
-% Explain the following commands:
-% \label
-% \ref
-% \cite
-% Note: It will be helpful to use a previous figure as an example for \label and \ref
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{CONCLUSIONS}
-
-
-\addtolength{\textheight}{-12cm}   
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section*{ACKNOWLEDGMENT}
-
-- Overleaf.com, for the template
-
-
-
-% For acknowledgements, thank anyone who personally helped you with this assignment.
-% If you read a general tutorial or watched an instructional YouTube video on LaTeX, but didn’t specifically reference it, thank the creators.
-% If you received help from a current CMPE 185 student, let us know.  
-
-% Anything you do specifically reference should, of course, be cited and included in the References section.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section*{APPENDIX}
-
-Appendixes should appear before the acknowledgment. 
-\newline
-\newline
-- Any sources?
-
-Overleaf.com
-
-References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+\section{Geometric Integration}
+Traditional numerical integration methods such as the Runge-Kutta or Verlet schemes 
+are limited in their accuracy, as they do not inherently include the conservation principles. 
+Physical systems, under certain circumstances have quantities that are conserved, such as 
+angular/linear momentum, symplectic form, and other geometric structures that exist in the configuration space. 
+Geometric integrators are developed to preserve these structures, allowing for long time accuracy in its qualitative behaviour. 
+
+\subsection{Lie Group Variational Integrators}
+The attitude of a rigid body can be described by a rotation matrix $R \in SO(3) = \{ R \in \mathbb{R}^{3 \times 3} \;\mid\; R^\top R = I,\; \det(R) = 1 \}$.
+The set of rotation matrices $SO(3)$, is an example of a Lie Group. The attitude and position of a rigid body can be described by the Lie Group $SE(3)$.
+The discrete equations of motion used for the numerical integration schemes are derived
+by discretising the Lagrangian, and then taking a discrete variational approach to Hamilton's Principle 
+to find the equations of motion. 
+
+\subsection{Continuous Time Equations of Motion}
+For our spacecraft, we can model the system by the following continuous time equations of motion. 
+\begin{equation}
+\begin{aligned}
+\dot{x} &= v \\
+m \dot{v} &= - \nabla U(x) + F_T + F_D \\
+\dot{R} &= R S(\Omega) \\
+\dot{\Pi} + \Omega \times \Pi &= M + \tau_T + \tau_D
+\end{aligned}
+\end{equation}
+
+$U(x)$ is the potential energy function around Mars, $F_T$ and $F_D$ are forces 
+from thrust and drag, and $\tau_T$ and $\tau_D$ are corresponding torque quantites. 
+$M$ represents the gravity gradient torque. 
+$R$ is the rotation matrix from body-fixed frame to the inertial frame of reference, which has its origin at the center of Mars.
+$S(.)$ mapping produces the skew symmetric matrix upon acting on a vector, as the following: 
+\begin{equation}
+S(x) = 
+\begin{bmatrix}
+0 & -x_3 & x_2 \\
+x_3 & 0 & -x_1 \\
+-x_2 & x_1 & 0
+\end{bmatrix}.
+\end{equation}
+$\Pi$ represents the angular momentum, and $\Omega$ represents the angular velocity, both in the body fixed frame.  
+The force produced from the fuel ejecting and mass decreasing is not modelled. 
+
+\subsection{Discrete Equations of Motion}
+The discrete equations of motion in the Hamiltonian form: 
+\begin{equation}
+\begin{aligned}
+x_{k+1} &= x_k + \frac{h}{m} \gamma_k + \frac{h^2}{2m} \left( -\nabla U(x_k) + f(x_k, p_k) \right)\\
+p_{k+1} &= p_k + \frac{h}{2}  \left( -\nabla U(x_k) + f(x_k, p_k) \right) \\
+&+ \frac{h}{2}  \left( -\nabla U(x_{k+1}) + f(x_{k+1}, p_{k+1}) \right) \\
+h S(\Pi_k + \frac{h}{2}(M_k + \tau_k)) &= F_k J_d + J_d F_k ^T \\
+\Pi_{k+1} &= F_k^T \Pi_k + \frac{h}{2} F_k^T (M_k + \tau_k) + \frac{h}{2} (M_{k+1} + \tau_{k+1}) \\
+R_{k+1} &= R_k F_k
+\end{aligned}
+\end{equation}
+
+Equation (3a) can be solved by considering the Lie Algebra of $F_k$, and using a newton iteration solver. 
+In the various papers by M Leok, it is explained why $F_k$ always remains on $SO(3)$. 
+
+\section{Geometric Attitude Control}
+The control inputs, are the 4 throttle inputs for each of the engines. The torque produced by the thrusters 
+can be found as shown in the extension pack. Thus, we consider the desired moment that needs to be produced by the engines, 
+as we can simply invert the matrix that relates the torque to the throttle values. 
+As shown in the paper by T.Lee et al (Geometric tracking control of a quadrotor UAV on SE(3)), 
+we can define the error in attitude not by naviely subtracting the euler angles, but rather intrinsically on $SO(3)$.
+
+The error in attitude becomes:
+\begin{equation}
+    e_R = \frac{1}{2} \left(R_d ^T R -  R^T R_d \right)^{\vee}
+\end{equation}
+
+The $(.)^{\vee}$ map is the inverse of the $S(.)$ map. 
+The error in angular velocity then is defined to be: 
+\begin{equation}
+    e_{\Omega} = \Omega - R^T R_d \Omega_d
+\end{equation}
+
+Then the control input, or desired torque is: 
+\begin{equation}
+\begin{aligned}
+\tau_u = &-k_R e_R - k_{\Omega} e_{\Omega} + \Omega \times J \Omega \\
+       &+ - J \big( S(\Omega) R^{T} R_{d} \Omega_{d} - R^{T} R_{d} \dot{\Omega}_{d} \big)
+\end{aligned}
+\end{equation}
+
+\section{Limitation}
+Due to the time constraints, I have not been able to run and test the implementation of the integration of the 
+integrators/controllers within the pre-existing Mars Lander Framework. 
+Some difficulties were working around most of the code being written in vector, instead of Eigen. 
+
+\section{Compilation}
+Please compile the \texttt{LGVI\_SE3.cpp} C++ file as well as the two files provided from the department.
+An heading with for the LGVI file is provided by \texttt{LGVI\_SE3.h}. 
 
 
 
